@@ -23,12 +23,36 @@
     ],
     "description": "Log output to console"
   },
+  "jslog1": {
+    "scope": "javascript,typescript",
+    "prefix": "jslog1",
+    "body": [
+      "console.log($1);",
+      "$2"
+    ],
+    "description": "Log output to console"
+  },
+  "jslog2": {
+    "scope": "javascript,typescript",
+    "prefix": "jslog2",
+    "body": [
+      "console.log(/---/);",
+      "console.log(JSON.stringify($1));",
+      "console.log(/---/);",
+      "$2"
+    ],
+    "description": "Log output to console"
+  },
   "jsmain": {
     "scope": "javascript,typescript",
     "prefix": "jsmain",
     "body": [
       "if (require.main === module) {",
-      "$1 }"
+      "  async function main() {",
+      "    $1",
+      "  }",
+      "  main().catch(console.error)",
+      "}"
     ],
     "description": ""
   }
